@@ -1,0 +1,141 @@
+---
+const navLinks = [
+    { label: "Home", href: "#home" },
+    { label: "About", href: "#about" },
+    { label: "Projects", href: "#projects" },
+    { label: "Contact", href: "#contact" },
+];
+---
+
+<header
+    id="navbar"
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+>
+    <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="#home" class="text-xl font-bold tracking-tight group">
+            <span class="text-primary">S</span>antiago
+            <span class="text-primary">J</span>ojoa
+        </a>
+
+        <!-- Links Desktop -->
+        <ul class="hidden md:flex items-center gap-8">
+            {
+                navLinks.map((link) => (
+                    <li>
+                        <a
+                            href={link.href}
+                            class="text-muted hover:text-white text-sm font-medium transition-colors duration-200 relative group"
+                        >
+                            {link.label}
+                            <span class="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+
+        <!-- Hamburger Mobile -->
+        <button
+            id="menu-btn"
+            class="md:hidden flex flex-col gap-1.5 p-2"
+            aria-label="Abrir menú"
+        >
+            <span
+                class="block w-6 h-0.5 bg-white transition-all duration-300"
+                id="line1"></span>
+            <span
+                class="block w-6 h-0.5 bg-white transition-all duration-300"
+                id="line2"></span>
+            <span
+                class="block w-6 h-0.5 bg-white transition-all duration-300"
+                id="line3"></span>
+        </button>
+    </nav>
+
+    <!-- Menú Mobile -->
+    <div
+        id="mobile-menu"
+        class="md:hidden hidden flex-col items-center gap-6 py-6 bg-dark/95 backdrop-blur-sm border-t border-white/10"
+    >
+        {
+            navLinks.map((link) => (
+                <a
+                    href={link.href}
+                    class="mobile-link text-muted hover:text-white text-sm font-medium transition-colors"
+                >
+                    {link.label}
+                </a>
+            ))
+        }
+    </div>
+</header>
+
+<script>
+    import { gsap } from "gsap";
+
+    // Esperamos que el DOM esté listo
+    document.addEventListener("DOMContentLoaded", () => {
+        // Animación de entrada del navbar
+        gsap.fromTo(
+            "#navbar",
+            { y: -80, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.8, ease: "power3.out", delay: 0.2 },
+        );
+
+        // Efecto glassmorphism al hacer scroll
+        const navbar = document.getElementById("navbar");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 50) {
+                navbar?.classList.add(
+                    "bg-dark/80",
+                    "backdrop-blur-md",
+                    "border-b",
+                    "border-white/10",
+                );
+            } else {
+                navbar?.classList.remove(
+                    "bg-dark/80",
+                    "backdrop-blur-md",
+                    "border-b",
+                    "border-white/10",
+                );
+            }
+        });
+
+        // Hamburger menu
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const line1 = document.getElementById("line1");
+        const line2 = document.getElementById("line2");
+        const line3 = document.getElementById("line3");
+        let isOpen = false;
+
+        menuBtn?.addEventListener("click", () => {
+            isOpen = !isOpen;
+            mobileMenu?.classList.toggle("hidden");
+            mobileMenu?.classList.toggle("flex");
+
+            if (isOpen) {
+                line1!.style.transform = "translateY(8px) rotate(45deg)";
+                line3!.style.transform = "translateY(-8px) rotate(-45deg)";
+                line2!.style.opacity = "0";
+            } else {
+                line1!.style.transform = "";
+                line3!.style.transform = "";
+                line2!.style.opacity = "1";
+            }
+        });
+
+        document.querySelectorAll(".mobile-link").forEach((link) => {
+            link.addEventListener("click", () => {
+                mobileMenu?.classList.add("hidden");
+                mobileMenu?.classList.remove("flex");
+                isOpen = false;
+                line1!.style.transform = "";
+                line3!.style.transform = "";
+                line2!.style.opacity = "1";
+            });
+        });
+    });
+</script>

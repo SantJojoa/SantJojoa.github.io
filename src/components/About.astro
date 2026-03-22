@@ -1,0 +1,241 @@
+---
+const stats = [
+    { value: "2+", label: "Años de experiencia" },
+    { value: "10+", label: "Proyectos completados" },
+    { value: "5+", label: "Tecnologías dominadas" },
+];
+---
+
+<section id="about" class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-16" id="about-header">
+            <p
+                class="text-secondary text-sm font-medium tracking-widest uppercase mb-3"
+            >
+                Quién soy
+            </p>
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white">
+                Sobre <span
+                    class="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary"
+                    >Mí</span
+                >
+            </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <!-- Foto + Stats -->
+            <div id="about-image" class="flex flex-col items-center gap-8">
+                <!-- Foto placeholder con marco -->
+                <div class="relative">
+                    <div
+                        class="absolute -inset-1 rounded-3xl bg-linear-to-br from-primary to-secondary opacity-30 blur-lg"
+                    >
+                    </div>
+                    <div
+                        class="relative w-72 h-80 rounded-3xl bg-surface border border-white/10
+                      flex flex-col items-center justify-center gap-3 overflow-hidden"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-28 h-28 text-muted/30"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"
+                            ></path>
+                        </svg>
+                        <span class="text-muted/50 text-xs font-medium"
+                            >Tu foto aquí</span
+                        >
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-4 w-full">
+                    {
+                        stats.map((stat, i) => (
+                            <div
+                                class="stat-card flex flex-col items-center gap-1 p-4 rounded-2xl
+                     bg-surface border border-white/5 text-center"
+                                data-index={i}
+                            >
+                                <span class="text-2xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">
+                                    {stat.value}
+                                </span>
+                                <span class="text-muted text-xs leading-tight">
+                                    {stat.label}
+                                </span>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <!-- Texto + CV -->
+            <div id="about-text" class="flex flex-col gap-6">
+                <div class="flex flex-col gap-4 text-muted leading-relaxed">
+                    <p>
+                        Soy <span class="text-white font-semibold"
+                            >Santiago Jojoa</span
+                        >, desarrollador Full Stack con pasión por crear
+                        aplicaciones web robustas y escalables. Me especializo
+                        en construir soluciones completas, desde la base de
+                        datos hasta la interfaz de usuario.
+                    </p>
+                    <p>
+                        Trabajo con tecnologías modernas como <span
+                            class="text-white font-medium">React</span
+                        >,
+                        <span class="text-white font-medium">Node.js</span>,
+                        <span class="text-white font-medium">NestJS</span> y
+                        <span class="text-white font-medium">PostgreSQL</span>,
+                        siempre enfocado en escribir código limpio, mantenible y
+                        con buenas prácticas.
+                    </p>
+                    <p>
+                        Me gusta afrontar nuevos retos técnicos, aprender
+                        constantemente y colaborar en equipo para llevar los
+                        proyectos al siguiente nivel.
+                    </p>
+                </div>
+
+                <!-- Info personal -->
+                <div
+                    class="grid grid-cols-1 gap-3 p-6 rounded-2xl bg-surface border border-white/5"
+                >
+                    {
+                        [
+                            { label: "Nombre", value: "Santiago Jojoa" },
+                            { label: "Ubicación", value: "Colombia" },
+                            { label: "Rol", value: "Full Stack Developer" },
+                            { label: "Idiomas", value: "Español, Inglés" },
+                            { label: "Correo", value: "tucorreo@email.com" },
+                        ].map((item) => (
+                            <div class="flex items-center gap-3 text-sm">
+                                <span class="text-muted w-24 shrink-0">
+                                    {item.label}
+                                </span>
+                                <span class="w-px h-4 bg-white/10" />
+                                <span class="text-white font-medium">
+                                    {item.value}
+                                </span>
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <!-- Botón descargar CV -->
+
+                <a
+                    href="/cv.pdf"
+                    download
+                    id="cv-btn"
+                    class="group flex
+                items-center gap-3 w-fit px-6 py-3 rounded-xl bg-primary
+                hover:bg-primary/80 text-white font-semibold transition-all
+                duration-300 hover:scale-105 hover:shadow-lg
+                hover:shadow-primary/25"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-5 h-5 group-hover:animate-bounce"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                        ></path>
+                    </svg>
+                    Descargar CV
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        import { gsap } from "gsap";
+        import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            gsap.fromTo(
+                "#about-header",
+                { opacity: 0, y: 40 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.7,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: "#about-header",
+                        start: "top 85%",
+                    },
+                },
+            );
+
+            gsap.fromTo(
+                "#about-image",
+                { opacity: 0, x: -50 },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.8,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: "#about-image",
+                        start: "top 80%",
+                    },
+                },
+            );
+
+            gsap.fromTo(
+                "#about-text",
+                { opacity: 0, x: 50 },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.8,
+                    ease: "power3.out",
+                    scrollTrigger: { trigger: "#about-text", start: "top 80%" },
+                },
+            );
+
+            gsap.fromTo(
+                ".stat-card",
+                { opacity: 0, y: 20, scale: 0.9 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 0.4,
+                    ease: "back.out(1.7)",
+                    stagger: 0.1,
+                    scrollTrigger: { trigger: ".stat-card", start: "top 85%" },
+                },
+            );
+
+            // Efecto contador en los stats
+            const counters = document.querySelectorAll(
+                ".stat-card span:first-child",
+            );
+            counters.forEach((counter) => {
+                gsap.fromTo(
+                    counter,
+                    { opacity: 0 },
+                    {
+                        opacity: 1,
+                        duration: 1,
+                        scrollTrigger: { trigger: counter, start: "top 90%" },
+                    },
+                );
+            });
+        });
+    </script>
+</section>
