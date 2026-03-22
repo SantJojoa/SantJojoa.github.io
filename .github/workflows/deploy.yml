@@ -49,12 +49,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-```
-
----
-
-### Paso 3: Crear el repositorio en GitHub
-
-Ve a [github.com/new](https://github.com/new) y crea un repositorio con este nombre exacto:
-```
-SantJojoa.github.io
