@@ -7,7 +7,6 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://SantJojoa.github.io',
   base: '/',
-
   vite: {
     plugins: [tailwindcss()]
   }
